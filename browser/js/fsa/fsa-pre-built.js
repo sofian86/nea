@@ -86,6 +86,12 @@
 
         };
 
+        var callbackUrls = {facebook: "http://localhost:1337/auth/facebook"};
+
+        this.fbLogin = function (){
+            window.location.href = callbackUrls.facebook;
+        };
+
         this.login = function (credentials) {
             return $http.post('/login', credentials)
                 .then(onSuccessfulLogin)
