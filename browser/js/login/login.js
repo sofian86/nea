@@ -13,6 +13,12 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
     $scope.login = {};
     $scope.error = null;
 
+    $scope.fbLogin = function (){
+        console.log('this is running')
+        AuthService.fbLogin();
+    };
+
+
     $scope.sendLogin = function (loginInfo) {
 
         $scope.error = null;
