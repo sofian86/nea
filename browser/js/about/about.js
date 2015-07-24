@@ -1,17 +1,20 @@
 app.config(function ($stateProvider) {
 
     // Register our *about* state.
-    $stateProvider.state('about', {
-        url: '/about',
-        controller: 'AboutController',
+    $stateProvider.state('people', {
+        url: '/people',
+        controller: 'PeopleController',
         templateUrl: 'js/about/about.html'
     });
-
 });
 
-app.controller('AboutController', function ($scope, FullstackPics) {
+app.controller('PeopleController', function ($scope, ProfileFactory) {
 
-    // Images of beautiful Fullstack people.
-    $scope.images = _.shuffle(FullstackPics);
+    ProfileFactory.getUserInfo().then(function(res){
+    	$scope.names = res.displayName;
+    	$scope.photos = res.photos;
+
+    })
+    
 
 });
