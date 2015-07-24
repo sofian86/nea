@@ -21,8 +21,7 @@ module.exports = function (app) {
         UserModel.findOne({ 'facebook.id': profile.id }).exec()
             .then(function (user) {
                 userInfoTheSame =_.every(user, {id: profile.id, displayName: profile.displayName, photos: photos});
-
-                console.log('inside the callback verifyty', user)
+                
                 if(user && userInfoTheSame){
                     return user;
                 }
